@@ -58,6 +58,8 @@ void Shader::Init() {
         std::cout << "ERROR::SHADER::LINKING_FAILED\n" << infoLog << std::endl;
     }
 
+    glDetachShader(m_ShaderID, vertexShader);
+    glDetachShader(m_ShaderID, fragmentShader);
     glDeleteShader(vertexShader);
     glDeleteShader(fragmentShader);
 }

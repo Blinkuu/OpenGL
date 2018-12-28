@@ -14,7 +14,7 @@ public:
 
     void Use() const;
 
-    int GetID() const noexcept { return m_ShaderID; }
+    unsigned int GetID() const noexcept { return m_ShaderID; }
 
     void SetInt(const char* locationName, int v1) const;
     void SetBool4(const char* locationName, bool v1, bool v2, bool v3, bool v4) const;
