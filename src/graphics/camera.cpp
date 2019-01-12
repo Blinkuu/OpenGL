@@ -22,27 +22,34 @@ glm::mat4 Camera::GetViewMatrix() const {
     return glm::lookAt(m_Pos, m_Pos + m_Front, m_Up);
 }
 
+glm::vec3 Camera::GetPosition() const {
+    return m_Pos;
+}
+
 void Camera::ProcessKeyboardMovement(CameraMovement direction, float deltaTime) {
+    float velocity = m_MovementSpeed * deltaTime;
 #if FPS_CAM
     if(direction == CameraMovement::FORWARD) {
-        m_Pos += m_FrontFPS * m_MovementSpeed * deltaTime;
-    }
-    if(direction == CameraMovement::BACKWARD) {
-        m_Pos -= m_FrontFPS * m_MovementSpeed * deltaTime;
+        m_Pos += m_FrontFPS * velocity;
+    } else if(direction == CameraMovement::BACKWARD) {
+        m_Pos -= m_FrontFPS * velocity;
     }
 #else
     if(direction == CameraMovement::FORWARD) {
-        m_Pos += m_Front * m_MovementSpeed * deltaTime;
+        m_Pos += m_Front * velocity;
     }
     if(direction == CameraMovement::BACKWARD) {
-        m_Pos -= m_Front * m_MovementSpeed * deltaTime;
+        m_Pos -= m_Front * velocity;
     }
 #endif
-    if(direction == CameraMovement::LEFT) {
-        m_Pos -= m_Right * m_MovementSpeed * deltaTime;
-    }
-    if(direction == CameraMovement::RIGHT) {
-        m_Pos += m_Right * m_MovementSpeed * deltaTime;
+    else if(direction == CameraMovement::LEFT) {
+        m_Pos -= m_Right * velocity;
+    } else if(direction == CameraMovement::RIGHT) {
+        m_Pos += m_Right * velocity;
+    } else if(direction == CameraMovement::UP) {
+        m_Pos += m_WorldUp * velocity;
+    } else if(direction == CameraMovement::DOWN) {
+        m_Pos -= m_WorldUp * velocity;
     }
 }
 

@@ -65,8 +65,12 @@ void Shader::Init() {
 }
 
 
-void Shader::Use() const {
+void Shader::Bind() const {
     glUseProgram(m_ShaderID);
+}
+
+void Shader::Unbind() const {
+    glUseProgram(0);
 }
 
 int Shader::GetLocation(const char* locationName) const {
@@ -92,6 +96,18 @@ void Shader::SetFloat4(const char* locationName, float v1, float v2, float v3, f
     glUniform4f(GetLocation(locationName), v1, v2, v3, v4);
 }
 
-void Shader::SetMat4(const char* locationName, glm::mat4& matrix) {
+void Shader::SetMat4(const char* locationName, const glm::mat4& matrix) const {
     glUniformMatrix4fv(GetLocation(locationName), 1, GL_FALSE, glm::value_ptr(matrix));
+}
+
+void Shader::SetVec4(const char* locationName, const glm::vec4& vec) const {
+    glUniform4f(GetLocation(locationName), vec.x, vec.y, vec.z, vec.w);
+}
+
+void Shader::SetVec3(const char* locationName, const glm::vec3& vec) const {
+    glUniform3f(GetLocation(locationName), vec.x, vec.y, vec.z);
+}
+
+void Shader::SetVec2(const char* locationName, const glm::vec2& vec) const {
+    glUniform2f(GetLocation(locationName), vec.x, vec.y);
 }

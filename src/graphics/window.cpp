@@ -92,6 +92,12 @@ void Window::ProcessInput(float deltaTime) {
     if(glfwGetKey(m_Window, GLFW_KEY_D) == GLFW_PRESS) {
         m_Camera->ProcessKeyboardMovement(CameraMovement::RIGHT, deltaTime);
     }
+    if(glfwGetKey(m_Window, GLFW_KEY_E) == GLFW_PRESS) {
+        m_Camera->ProcessKeyboardMovement(CameraMovement::UP, deltaTime);
+    }
+    if(glfwGetKey(m_Window, GLFW_KEY_Q) == GLFW_PRESS) {
+        m_Camera->ProcessKeyboardMovement(CameraMovement::DOWN, deltaTime);
+    }
 
     double xpos, ypos;
     glfwGetCursorPos(m_Window, &xpos, &ypos);
