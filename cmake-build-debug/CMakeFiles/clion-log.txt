@@ -1,5 +1,0 @@
-/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_COMPILER=/usr/local/bin/g++-8 -G "CodeBlocks - Unix Makefiles" /Users/Blinku/Desktop/Programming/OpenGLSandbox/OpenGL
--- WARNING: you are using the obsolete 'GLU' package, please use 'OpenGL' instead
--- Configuring done
--- Generating done
--- Build files have been written to: /Users/Blinku/Desktop/Programming/OpenGLSandbox/OpenGL/cmake-build-debug
