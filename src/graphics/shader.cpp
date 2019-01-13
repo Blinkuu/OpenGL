@@ -96,6 +96,10 @@ void Shader::SetFloat4(const char* locationName, float v1, float v2, float v3, f
     glUniform4f(GetLocation(locationName), v1, v2, v3, v4);
 }
 
+void Shader::SetFloat(const char* locationName, float v1) const {
+    glUniform1f(GetLocation(locationName), v1);
+}
+
 void Shader::SetMat4(const char* locationName, const glm::mat4& matrix) const {
     glUniformMatrix4fv(GetLocation(locationName), 1, GL_FALSE, glm::value_ptr(matrix));
 }

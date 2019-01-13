@@ -30,12 +30,12 @@ int main() {
         -0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
         -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
 
-        -0.5f, -0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
-         0.5f, -0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
-         0.5f,  0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
-         0.5f,  0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
-         -0.5f,  0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
-        -0.5f, -0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
+        -0.5f, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
+         0.5f, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
+         0.5f,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
+         0.5f,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
+        -0.5f,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
+        -0.5f, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
 
         -0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
         -0.5f,  0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
@@ -65,6 +65,7 @@ int main() {
         -0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
         -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f
     };
+
 
     /** Cube **/
     unsigned int cubeVAO;
@@ -105,7 +106,7 @@ int main() {
     glm::mat4 projection = glm::perspective(glm::radians(45.0f), window.GetAspectRatio(), 0.1f, 100.0f);
 
     /** Light Position **/
-    glm::vec3 lightPosition = glm::vec3(0.0f, 2.0f, 0.0f);
+    glm::vec3 lightPosition = glm::vec3(2.0f, 3.0f, 2.0f);
 
     /** Cube Shader **/
     Shader cubeShader("src/shaders/cube.vert", "src/shaders/cube.frag");
@@ -114,13 +115,21 @@ int main() {
 
     glm::vec3 objectColor = glm::vec3(0.7f, 0.4f, 0.2f);
     glm::vec3 lightColor = glm::vec3(1.0f, 1.0f, 1.0f);
-    cubeShader.SetVec3("u_objectColor", objectColor);
-    cubeShader.SetVec3("u_lightColor", lightColor);
+
+    cubeShader.SetVec3("light.ambient",  glm::vec3(1.0f, 1.0f, 1.0f));
+    cubeShader.SetVec3("light.diffuse",  glm::vec3(0.5f, 0.5f, 0.5f));
+    cubeShader.SetVec3("light.specular", glm::vec3(1.0f, 1.0f, 1.0f));
+
+    cubeShader.SetVec3("material.ambient",  glm::vec3(0.0215f, 0.1745f, 0.0215f));
+    cubeShader.SetVec3("material.diffuse",  glm::vec3(0.07568f, 0.61424f, 0.07568f));
+    cubeShader.SetVec3("material.specular", glm::vec3(0.633f, 0.727811f, 0.633f));
+    cubeShader.SetFloat("material.shininess", 32.0f);
 
     /** Light Shader **/
     Shader lightShader("src/shaders/light.vert", "src/shaders/light.frag");
     lightShader.Bind();
     lightShader.SetMat4("projection", projection);
+    lightShader.SetVec3("light.color", glm::vec3(1.0f, 1.0f, 1.0f));
 
     float lastFrame = 0.0f;
 
@@ -134,11 +143,6 @@ int main() {
 
         glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
         window.Clear();
-
-        /** Change light position **/
-        float radius = 1.0f;
-        lightPosition.x = radius * glm::cos(currentFrame);
-        lightPosition.z = radius * glm::sin(currentFrame);
 
         glm::mat4 view = camera.GetViewMatrix();
 
@@ -162,12 +166,12 @@ int main() {
         cubeShader.SetMat4("view", view);
 
         glm::mat4 cubeModel(1.0f);
-        cubeModel = glm::scale(cubeModel, glm::vec3(0.5f, 0.5f, 0.5f));
         cubeModel = glm::translate(cubeModel, glm::vec3(0.0f, 0.0f, 0.0f));
+        cubeModel = glm::scale(cubeModel, glm::vec3(0.5f, 0.5f, 0.5f));
         cubeShader.SetMat4("model", cubeModel);
 
-        cubeShader.SetVec3("u_lightPosition", lightPosition);
         cubeShader.SetVec3("u_cameraPosition", camera.GetPosition());
+        cubeShader.SetVec3("light.position", lightPosition);
 
         glDrawArrays(GL_TRIANGLES, 0, 36);
 
