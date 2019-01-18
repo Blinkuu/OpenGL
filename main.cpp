@@ -8,7 +8,6 @@
 #include "shader.h"
 #include "texture.h"
 #include "file_loader.h"
-#include "event.h"
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
