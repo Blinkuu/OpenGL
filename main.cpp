@@ -23,47 +23,48 @@ int main() {
 
     /** Vertex Data **/
     float vertices[] = {
-        -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
-         0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
-         0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
-         0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
-        -0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
-        -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+        // positions          // normals           // texture coords
+        -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  0.0f, 0.0f,
+         0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  1.0f, 0.0f,
+         0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  1.0f, 1.0f,
+         0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  1.0f, 1.0f,
+        -0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  0.0f, 1.0f,
+        -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  0.0f, 0.0f,
 
-        -0.5f, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
-         0.5f, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
-         0.5f,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
-         0.5f,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
-        -0.5f,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
-        -0.5f, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
+        -0.5f, -0.5f,  0.5f,  0.0f,  0.0f, 1.0f,   0.0f, 0.0f,
+         0.5f, -0.5f,  0.5f,  0.0f,  0.0f, 1.0f,   1.0f, 0.0f,
+         0.5f,  0.5f,  0.5f,  0.0f,  0.0f, 1.0f,   1.0f, 1.0f,
+         0.5f,  0.5f,  0.5f,  0.0f,  0.0f, 1.0f,   1.0f, 1.0f,
+        -0.5f,  0.5f,  0.5f,  0.0f,  0.0f, 1.0f,   0.0f, 1.0f,
+        -0.5f, -0.5f,  0.5f,  0.0f,  0.0f, 1.0f,   0.0f, 0.0f,
 
-        -0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
-        -0.5f,  0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
-        -0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
-        -0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
-        -0.5f, -0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
-        -0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
+        -0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,  1.0f, 0.0f,
+        -0.5f,  0.5f, -0.5f, -1.0f,  0.0f,  0.0f,  1.0f, 1.0f,
+        -0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,  0.0f, 1.0f,
+        -0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,  0.0f, 1.0f,
+        -0.5f, -0.5f,  0.5f, -1.0f,  0.0f,  0.0f,  0.0f, 0.0f,
+        -0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,  1.0f, 0.0f,
 
-         0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
-         0.5f,  0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
-         0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
-         0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
-         0.5f, -0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
-         0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
+         0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,  1.0f, 0.0f,
+         0.5f,  0.5f, -0.5f,  1.0f,  0.0f,  0.0f,  1.0f, 1.0f,
+         0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,  0.0f, 1.0f,
+         0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,  0.0f, 1.0f,
+         0.5f, -0.5f,  0.5f,  1.0f,  0.0f,  0.0f,  0.0f, 0.0f,
+         0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,  1.0f, 0.0f,
 
-        -0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
-         0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
-         0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
-         0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
-        -0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
-        -0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
+        -0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,  0.0f, 1.0f,
+         0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,  1.0f, 1.0f,
+         0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,  1.0f, 0.0f,
+         0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,  1.0f, 0.0f,
+        -0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,  0.0f, 0.0f,
+        -0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,  0.0f, 1.0f,
 
-        -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,
-         0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,
-         0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
-         0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
-        -0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
-        -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f
+        -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  0.0f, 1.0f,
+         0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  1.0f, 1.0f,
+         0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  1.0f, 0.0f,
+         0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  1.0f, 0.0f,
+        -0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  0.0f, 0.0f,
+        -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  0.0f, 1.0f
     };
 
 
@@ -79,10 +80,12 @@ int main() {
 
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), reinterpret_cast<const void*>(vertices), GL_STATIC_DRAW);
 
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6*sizeof(float), reinterpret_cast<void*>(0));
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8*sizeof(float), reinterpret_cast<void*>(0));
     glEnableVertexAttribArray(0);
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6*sizeof(float), reinterpret_cast<void*>(3*sizeof(float)));
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8*sizeof(float), reinterpret_cast<void*>(3*sizeof(float)));
     glEnableVertexAttribArray(1);
+    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8*sizeof(float), reinterpret_cast<void*>(6*sizeof(float)));
+    glEnableVertexAttribArray(2);
 
     glBindVertexArray(0);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
@@ -96,7 +99,7 @@ int main() {
 
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), reinterpret_cast<const void*>(vertices), GL_STATIC_DRAW);
 
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6*sizeof(float), reinterpret_cast<void*>(0));
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8*sizeof(float), reinterpret_cast<void*>(0));
     glEnableVertexAttribArray(0);
 
     glBindVertexArray(0);
@@ -105,39 +108,54 @@ int main() {
     /** Projection Matrix **/
     glm::mat4 projection = glm::perspective(glm::radians(45.0f), window.GetAspectRatio(), 0.1f, 100.0f);
 
-    /** Light Position **/
-    glm::vec3 lightPosition = glm::vec3(2.0f, 3.0f, 2.0f);
+    /** Light Position and Color**/
+    glm::vec3 lightDirection = glm::vec3(2.0f, 2.0f, 2.0f);
+    glm::vec3 lightColor = glm::vec3(1.0f, 1.0f, 1.0f);
+
+    /** Cube Texture **/
+    Texture cubeDiffuseMap("src/textures/container2.jpg");
+    Texture cubeSpecularMap("src/textures/container2_specular.jpg");
 
     /** Cube Shader **/
     Shader cubeShader("src/shaders/cube.vert", "src/shaders/cube.frag");
     cubeShader.Bind();
     cubeShader.SetMat4("projection", projection);
 
-    glm::vec3 objectColor = glm::vec3(0.7f, 0.4f, 0.2f);
-    glm::vec3 lightColor = glm::vec3(1.0f, 1.0f, 1.0f);
+    cubeShader.SetVec3("light.ambient",  lightColor * glm::vec3(0.2f, 0.2f, 0.2f));
+    cubeShader.SetVec3("light.diffuse",  lightColor * glm::vec3(0.7f, 0.7f, 0.7f));
+    cubeShader.SetVec3("light.specular", lightColor * glm::vec3(1.0f, 1.0f, 1.0f));
+    cubeShader.SetFloat("light.constant", 1.0f);
+    cubeShader.SetFloat("light.linear", 0.09f);
+    cubeShader.SetFloat("light.quadratic", 0.032f);
 
-    cubeShader.SetVec3("light.ambient",  glm::vec3(1.0f, 1.0f, 1.0f));
-    cubeShader.SetVec3("light.diffuse",  glm::vec3(0.5f, 0.5f, 0.5f));
-    cubeShader.SetVec3("light.specular", glm::vec3(1.0f, 1.0f, 1.0f));
-
-    cubeShader.SetVec3("material.ambient",  glm::vec3(0.0215f, 0.1745f, 0.0215f));
-    cubeShader.SetVec3("material.diffuse",  glm::vec3(0.07568f, 0.61424f, 0.07568f));
-    cubeShader.SetVec3("material.specular", glm::vec3(0.633f, 0.727811f, 0.633f));
+    cubeShader.SetInt("material.diffuse",  0);
+    cubeShader.SetInt("material.specular",  1);
     cubeShader.SetFloat("material.shininess", 32.0f);
 
     /** Light Shader **/
     Shader lightShader("src/shaders/light.vert", "src/shaders/light.frag");
     lightShader.Bind();
     lightShader.SetMat4("projection", projection);
-    lightShader.SetVec3("light.color", glm::vec3(1.0f, 1.0f, 1.0f));
+    lightShader.SetVec3("light.color", lightColor);
+
+    glm::vec3 cubePositions[] = {
+        glm::vec3(0.0f, 0.0f, 0.0f),
+        glm::vec3(2.0f, 0.0f, 0.0f),
+        glm::vec3(4.0f, 0.0f, 0.0f),
+        glm::vec3(6.0f, 0.0f, 0.0f),
+        glm::vec3(8.0f, 0.0f, 0.0f)
+    };
 
     float lastFrame = 0.0f;
-
     while (!window.ShouldClose())
     {
         auto currentFrame = static_cast<float>(glfwGetTime());
         float deltaTime = currentFrame - lastFrame;
         lastFrame = currentFrame;
+
+        /** Sun **/
+        /* lightDirection.x = glm::cos(0.5f*currentFrame);
+        lightDirection.z = glm::sin(0.5f*currentFrame);*/
 
         window.ProcessInput(deltaTime);
 
@@ -152,7 +170,7 @@ int main() {
         lightShader.SetMat4("view", view);
 
         glm::mat4 lightModel(1.0f);
-        lightModel = glm::translate(lightModel, lightPosition);
+        lightModel = glm::translate(lightModel, lightDirection);
         lightModel = glm::scale(lightModel, glm::vec3(0.1f, 0.1f, 0.1f));
         lightShader.SetMat4("model", lightModel);
 
@@ -161,30 +179,34 @@ int main() {
         glBindVertexArray(0);
 
         /** Cube **/
+        cubeDiffuseMap.Activate(0);
+        cubeDiffuseMap.Bind();
+        cubeSpecularMap.Activate(1);
+        cubeSpecularMap.Bind();
+
         glBindVertexArray(cubeVAO);
         cubeShader.Bind();
         cubeShader.SetMat4("view", view);
 
-        glm::mat4 cubeModel(1.0f);
-        cubeModel = glm::translate(cubeModel, glm::vec3(0.0f, 0.0f, 0.0f));
-        cubeModel = glm::scale(cubeModel, glm::vec3(0.5f, 0.5f, 0.5f));
-        cubeShader.SetMat4("model", cubeModel);
+        for(int i = 0; i < 16; ++i) {
+            glm::mat4 cubeModel(1.0f);
+            cubeModel = glm::translate(cubeModel, glm::vec3(2.0f + i, 0.0f, (2 + i) % 4));
+            cubeModel = glm::scale(cubeModel, glm::vec3(0.5f, 0.5f, 0.5f));
+            cubeShader.SetMat4("model", cubeModel);
 
-        cubeShader.SetVec3("u_cameraPosition", camera.GetPosition());
-        cubeShader.SetVec3("light.position", lightPosition);
+            cubeShader.SetVec3("u_cameraPosition", camera.GetPosition());
+            cubeShader.SetVec3("light.direction", lightDirection);
 
-        glDrawArrays(GL_TRIANGLES, 0, 36);
+            glDrawArrays(GL_TRIANGLES, 0, 36);
+        }
 
         glBindVertexArray(0);
-
 
         window.Update();
     }
 
     glDeleteBuffers(1, &cubeVBO);
     glDeleteVertexArrays(1, &cubeVAO);
-
-    window.Terminate();
 
     return 0;
 }

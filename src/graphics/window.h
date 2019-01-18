@@ -14,7 +14,7 @@ class GLFWwindow;
 class Window {
 public:
     Window(int width, int height, const char* windowName, GLFWmonitor *monitor, GLFWwindow *window, Camera* camera);
-    ~Window() = default;
+    ~Window();
 
     void Clear();
     void Update();

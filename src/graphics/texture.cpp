@@ -12,7 +12,8 @@ Texture::Texture(const char* texturePath) : m_TexturePath(texturePath) {
 }
 
 Texture::~Texture() {
-    glDeleteTextures(1, &m_TextureID);
+    if(m_TextureID)
+        glDeleteTextures(1, &m_TextureID);
 }
 
 void Texture::Bind() const {

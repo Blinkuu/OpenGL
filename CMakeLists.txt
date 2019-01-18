@@ -6,6 +6,7 @@ set(CMAKE_CXX_STANDARD 17)
 add_compile_options(
         -Wall -Wcast-align
         -Wnull-dereference
+        -g
 )
 
 find_package(glfw3 3.2 REQUIRED)
@@ -34,5 +35,13 @@ configure_file(src/shaders/cube.vert src/shaders/cube.vert COPYONLY)
 configure_file(src/shaders/cube.frag src/shaders/cube.frag COPYONLY)
 configure_file(src/shaders/light.vert src/shaders/light.vert COPYONLY)
 configure_file(src/shaders/light.frag src/shaders/light.frag COPYONLY)
+configure_file(src/shaders/floor.vert src/shaders/floor.vert COPYONLY)
+configure_file(src/shaders/floor.frag src/shaders/floor.frag COPYONLY)
+
 configure_file(src/textures/wall.jpg src/textures/wall.jpg COPYONLY)
 configure_file(src/textures/container.jpg src/textures/container.jpg COPYONLY)
+configure_file(src/textures/container2.jpg src/textures/container2.jpg COPYONLY)
+configure_file(src/textures/container2_specular.jpg src/textures/container2_specular.jpg COPYONLY)
+configure_file(src/textures/matrix.jpg src/textures/matrix.jpg COPYONLY)
+configure_file(src/textures/mcdirt.jpg src/textures/mcdirt.jpg COPYONLY)
+configure_file(src/textures/dirt.jpg src/textures/dirt.jpg COPYONLY)

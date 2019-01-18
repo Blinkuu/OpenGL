@@ -25,6 +25,10 @@ Window::Window(int width, int height, const char *windowName, GLFWmonitor *monit
 
 }
 
+Window::~Window() {
+    glfwTerminate();
+}
+
 void Window::Init(GLFWmonitor *monitor, GLFWwindow *window) {
     if (!glfwInit()) {
         std::cout << "Failed to initialize GLFW!" << std::endl;
