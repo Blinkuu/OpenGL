@@ -108,8 +108,9 @@ int main() {
     glm::mat4 projection = glm::perspective(glm::radians(45.0f), window.GetAspectRatio(), 0.1f, 100.0f);
 
     /** Light Position and Color**/
-    glm::vec3 lightDirection = glm::vec3(2.0f, 2.0f, 2.0f);
-    glm::vec3 lightColor = glm::vec3(1.0f, 1.0f, 1.0f);
+    glm::vec3 lightDirection(2.0f, 2.0f, 2.0f);
+    glm::vec3 lightColor(1.0f, 1.0f, 1.0f);
+    glm::vec3 flashlightColor(1.0f, 1.0f, 1.0f);
 
     /** Cube Texture **/
     Texture cubeDiffuseMap("src/textures/container2.jpg");
@@ -120,12 +121,19 @@ int main() {
     cubeShader.Bind();
     cubeShader.SetMat4("projection", projection);
 
-    cubeShader.SetVec3("light.ambient",  lightColor * glm::vec3(0.2f, 0.2f, 0.2f));
+    cubeShader.SetVec3("light.ambient",  lightColor * glm::vec3(0.1f, 0.1f, 0.1f));
     cubeShader.SetVec3("light.diffuse",  lightColor * glm::vec3(0.7f, 0.7f, 0.7f));
     cubeShader.SetVec3("light.specular", lightColor * glm::vec3(1.0f, 1.0f, 1.0f));
     cubeShader.SetFloat("light.constant", 1.0f);
     cubeShader.SetFloat("light.linear", 0.09f);
     cubeShader.SetFloat("light.quadratic", 0.032f);
+
+    cubeShader.SetVec3("u_spotlight.diffuse", flashlightColor * glm::vec3(0.8f, 0.8f, 0.8f));
+    cubeShader.SetFloat("u_spotlight.innerCutOff", glm::cos(glm::radians(5.0f)));
+    cubeShader.SetFloat("u_spotlight.outerCutOff", glm::cos(glm::radians(7.0f)));
+    cubeShader.SetFloat("u_spotlight.constant", 1.0f);
+    cubeShader.SetFloat("u_spotlight.linear", 0.09f);
+    cubeShader.SetFloat("u_spotlight.quadratic", 0.0072f);
 
     cubeShader.SetInt("material.diffuse",  0);
     cubeShader.SetInt("material.specular",  1);
@@ -137,14 +145,6 @@ int main() {
     lightShader.SetMat4("projection", projection);
     lightShader.SetVec3("light.color", lightColor);
 
-    glm::vec3 cubePositions[] = {
-        glm::vec3(0.0f, 0.0f, 0.0f),
-        glm::vec3(2.0f, 0.0f, 0.0f),
-        glm::vec3(4.0f, 0.0f, 0.0f),
-        glm::vec3(6.0f, 0.0f, 0.0f),
-        glm::vec3(8.0f, 0.0f, 0.0f)
-    };
-
     float lastFrame = 0.0f;
     while (!window.ShouldClose())
     {
@@ -153,7 +153,7 @@ int main() {
         lastFrame = currentFrame;
 
         /** Sun **/
-        /* lightDirection.x = glm::cos(0.5f*currentFrame);
+/*      lightDirection.x = glm::cos(0.5f*currentFrame);
         lightDirection.z = glm::sin(0.5f*currentFrame);*/
 
         window.ProcessInput(deltaTime);
@@ -195,6 +195,7 @@ int main() {
 
             cubeShader.SetVec3("u_cameraPosition", camera.GetPosition());
             cubeShader.SetVec3("light.direction", lightDirection);
+            cubeShader.SetVec3("u_spotlight.direction", camera.GetFront());
 
             glDrawArrays(GL_TRIANGLES, 0, 36);
         }

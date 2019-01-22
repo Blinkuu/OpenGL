@@ -82,3 +82,7 @@ void Camera::UpdateCameraVectors() {
     m_Right = glm::normalize(glm::cross(m_Front, m_WorldUp));
     m_Up = glm::normalize(glm::cross(m_Right, m_Front));
 }
+
+glm::vec3 Camera::GetFront() const {
+    return m_Front;
+}
