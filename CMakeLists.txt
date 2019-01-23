@@ -12,9 +12,10 @@ add_compile_options(
 find_package(glfw3 3.2 REQUIRED)
 
 include_directories(vendor/glad/include)
-include_directories(src/graphics)
-include_directories(src/utils)
 include_directories(src)
+include_directories(src/utils)
+include_directories(src/graphics)
+include_directories(src/graphics/buffers)
 
 add_executable(Minecraft
         main.cpp
@@ -24,7 +25,10 @@ add_executable(Minecraft
         src/graphics/shader.cpp
         src/graphics/camera.cpp
         src/utils/file_loader.cpp
-        src/utils/stb_image.h)
+        src/utils/stb_image.h
+        src/graphics/buffers/buffer.cpp
+        src/graphics/buffers/indexbuffer.cpp
+        src/graphics/buffers/vertexarray.cpp)
 
 target_link_libraries(Minecraft glfw)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
