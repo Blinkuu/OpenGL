@@ -97,8 +97,8 @@ int main() {
 
     /** Light Position and Color**/
     glm::vec3 sunDirection(-1.0f, -1.0f,-1.0f);
-    glm::vec3 sunColor(1.0f, 1.0f, 1.0f);
-    glm::vec3 lightColor(1.0f, 1.0f, 1.0f);
+    glm::vec3 sunColor(1.0f, 0.6f, 0.0f);
+    glm::vec3 lightColor(1.0f, 1.0f, 0.8f);
     glm::vec3 flashlightColor(1.0f, 1.0f, 1.0f);
 
     /** Cube Texture **/
@@ -216,9 +216,9 @@ int main() {
         cubeShader.SetMat4("view", view);
         cubeShader.SetVec3("u_CameraPosition", camera.GetPosition());
 
-        for(int i = 0; i < 16; ++i) {
+        for(int i = 0; i < 100; ++i) {
             glm::mat4 cubeModel(1.0f);
-            cubeModel = glm::translate(cubeModel, glm::vec3(2.0f + i, 0.0f, (2 + i) % 4));
+            cubeModel = glm::translate(cubeModel, glm::vec3(i / 5.0f, 0.0f, i % 10));
             cubeModel = glm::scale(cubeModel, glm::vec3(0.5f, 0.5f, 0.5f));
             cubeShader.SetMat4("model", cubeModel);
 
