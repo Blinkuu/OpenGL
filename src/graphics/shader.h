@@ -18,6 +18,7 @@ public:
     unsigned int GetID() const noexcept { return m_ShaderID; }
 
     void SetInt(const char* locationName, int v1) const;
+    void SetBool(const char* locationName, bool v1) const;
     void SetBool4(const char* locationName, bool v1, bool v2, bool v3, bool v4) const;
     void SetInit4(const char* locationName, int v1, int v2, int v3, int v4) const;
     void SetFloat4(const char* locationName, float v1, float v2, float v3, float v4) const;

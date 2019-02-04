@@ -16,7 +16,8 @@ Camera::Camera() :
     m_Yaw(YAW),
     m_Pitch(PITCH),
     m_MovementSpeed(MOV_SPEED),
-    m_MouseSensitivity(SENSITIVITY) {}
+    m_MouseSensitivity(SENSITIVITY),
+    m_FlashlightStatus(false) {}
 
 glm::mat4 Camera::GetViewMatrix() const {
     return glm::lookAt(m_Pos, m_Pos + m_Front, m_Up);
@@ -70,6 +71,12 @@ void Camera::ProcessMouseMovement(float xoffset, float yoffset) {
     UpdateCameraVectors();
 }
 
+void Camera::ProcessFlashlight() {
+    if(m_FlashlightStatus)
+        m_FlashlightStatus = false;
+    m_FlashlightStatus = true;
+}
+
 void Camera::UpdateCameraVectors() {
     glm::vec3 front;
     front.x = static_cast<float>(cos(glm::radians(m_Yaw)) * cos(glm::radians(m_Pitch)));
@@ -85,4 +92,8 @@ void Camera::UpdateCameraVectors() {
 
 glm::vec3 Camera::GetFront() const {
     return m_Front;
+}
+
+bool Camera::GetFlashLightStatus() const {
+    return m_FlashlightStatus;
 }

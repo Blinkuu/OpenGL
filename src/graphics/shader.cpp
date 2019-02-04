@@ -80,6 +80,10 @@ int Shader::GetLocation(const char* locationName) const {
     return location;
 }
 
+void Shader::SetBool(const char *locationName, bool v1) const {
+    glUniform1i(GetLocation(locationName), v1);
+}
+
 void Shader::SetBool4(const char* locationName, bool v1, bool v2, bool v3, bool v4) const {
     glUniform4i(GetLocation(locationName), v1, v2, v3, v4);
 }
@@ -115,3 +119,5 @@ void Shader::SetVec3(const char* locationName, const glm::vec3& vec) const {
 void Shader::SetVec2(const char* locationName, const glm::vec2& vec) const {
     glUniform2f(GetLocation(locationName), vec.x, vec.y);
 }
+
+
