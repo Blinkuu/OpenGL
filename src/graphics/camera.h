@@ -29,8 +29,10 @@ public:
     glm::mat4 GetViewMatrix() const;
     glm::vec3 GetPosition() const;
     glm::vec3 GetFront() const;
+    bool GetFlashLightStatus() const;
     void ProcessKeyboardMovement(CameraMovement direction, float deltaTime);
     void ProcessMouseMovement(float xOffset, float yOffset);
+    void ProcessFlashlight();
 private:
     glm::vec3 m_Pos;
     glm::vec3 m_WorldUp;
@@ -45,6 +47,8 @@ private:
 
     float m_MovementSpeed;
     float m_MouseSensitivity;
+
+    bool m_FlashlightStatus;
 private:
     void UpdateCameraVectors();
 };

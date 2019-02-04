@@ -202,6 +202,7 @@ int main() {
         cubeShader.Bind();
         cubeShader.SetVec3("u_SpotLight.position", camera.GetPosition());
         cubeShader.SetVec3("u_SpotLight.direction", camera.GetFront());
+        cubeShader.SetBool("u_FlashlightStatus", camera.GetFlashLightStatus());
 
         /** Cube **/
         cubeVAO.Bind();

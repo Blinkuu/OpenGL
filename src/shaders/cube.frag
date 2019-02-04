@@ -45,6 +45,7 @@ struct Material {
 uniform DirLight u_DirLight;
 uniform PointLight u_PointLights[NR_POINT_LIGHTS];
 uniform SpotLight u_SpotLight;
+uniform bool u_FlashlightStatus;
 uniform vec3 u_CameraPosition;
 uniform Material u_Material;
 
@@ -71,7 +72,8 @@ void main() {
 		resultLight += CalcPointLight(u_PointLights[i], norm, v_FragmentPos, viewDir);
 
 	// Spotlight
-    resultLight += CalcSpotLight(u_SpotLight, norm, v_FragmentPos, viewDir);
+	if(u_FlashlightStatus)
+        resultLight += CalcSpotLight(u_SpotLight, norm, v_FragmentPos, viewDir);
 
 	out_Color = vec4(resultLight, 1.0f);
 }

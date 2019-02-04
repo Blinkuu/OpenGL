@@ -15,13 +15,13 @@ static float __yOffset;
 
 void framebuffer_size_callback(GLFWwindow *window, int width, int height);
 void mouse_callback([[maybe_unused]]GLFWwindow* window, double xpos, double ypos);
+void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
 
 Window::Window(int width, int height, const char *windowName, GLFWmonitor *monitor, GLFWwindow *window, Camera* camera) :
-    m_Width(width), m_Height(height), m_WindowName(windowName), m_Camera(camera) {
+    m_Width(width), m_Height(height), m_WindowName(windowName), m_Camera(camera), m_State(false) {
 
     Init(monitor, window);
     m_DepthTest = false;
-
 }
 
 Window::~Window() {
@@ -57,6 +57,7 @@ void Window::Init(GLFWmonitor *monitor, GLFWwindow *window) {
     glfwSetInputMode(m_Window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
     glfwSetFramebufferSizeCallback(m_Window, framebuffer_size_callback);
     glfwSetCursorPosCallback(m_Window, mouse_callback);
+    glfwSetKeyCallback(m_Window, key_callback);
 }
 
 void Window::Terminate() {
@@ -102,6 +103,10 @@ void Window::ProcessInput(float deltaTime) {
         m_Camera->ProcessKeyboardMovement(CameraMovement::DOWN, deltaTime);
     }
 
+    int state = glfwGetKey(m_Window, GLFW_KEY_F);
+    if (state == GLFW_PRESS)
+        m_Camera->ProcessFlashlight();
+
     double xpos, ypos;
     glfwGetCursorPos(m_Window, &xpos, &ypos);
     float xoff = static_cast<float>(xpos) - __lastX;
@@ -140,6 +145,6 @@ void framebuffer_size_callback([[maybe_unused]]GLFWwindow *window, int width, in
     glViewport(0, 0, width, height);
 }
 
-void mouse_callback([[maybe_unused]]GLFWwindow* window, [[maybe_unused]]double xpos, [[maybe_unused]]double ypos) {
+void mouse_callback([[maybe_unused]]GLFWwindow* window, [[maybe_unused]]double xpos, [[maybe_unused]]double ypos) {}
 
-}
+void key_callback([[maybe_unused]]GLFWwindow* window, [[maybe_unused]]int key, [[maybe_unused]]int scancode, [[maybe_unused]]int action, [[maybe_unused]]int mods) {}
