@@ -18,7 +18,7 @@ void mouse_callback([[maybe_unused]]GLFWwindow* window, double xpos, double ypos
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
 
 Window::Window(int width, int height, const char *windowName, GLFWmonitor *monitor, GLFWwindow *window, Camera* camera) :
-    m_Width(width), m_Height(height), m_WindowName(windowName), m_Camera(camera), m_State(false) {
+    m_Width(width), m_Height(height), m_WindowName(windowName), m_Camera(camera) {
 
     Init(monitor, window);
     m_DepthTest = false;

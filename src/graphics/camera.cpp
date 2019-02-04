@@ -72,9 +72,10 @@ void Camera::ProcessMouseMovement(float xoffset, float yoffset) {
 }
 
 void Camera::ProcessFlashlight() {
-    if(m_FlashlightStatus)
+    if(!m_FlashlightStatus)
+        m_FlashlightStatus = true;
+    else
         m_FlashlightStatus = false;
-    m_FlashlightStatus = true;
 }
 
 void Camera::UpdateCameraVectors() {
