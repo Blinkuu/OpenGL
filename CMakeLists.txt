@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.12)
-project(Minecraft)
+project(OpenGL)
 
 set(CMAKE_CXX_STANDARD 17)
 
@@ -16,8 +16,9 @@ include_directories(src)
 include_directories(src/utils)
 include_directories(src/graphics)
 include_directories(src/graphics/buffers)
+include_directories(src/graphics/models)
 
-add_executable(Minecraft
+add_executable(OpenGL
         main.cpp
         vendor/glad/src/glad.c
         src/graphics/window.cpp
@@ -28,9 +29,10 @@ add_executable(Minecraft
         src/utils/stb_image.h
         src/graphics/buffers/buffer.cpp
         src/graphics/buffers/indexbuffer.cpp
-        src/graphics/buffers/vertexarray.cpp)
+        src/graphics/buffers/vertexarray.cpp
+        src/graphics/models/mesh.cpp)
 
-target_link_libraries(Minecraft glfw)
+target_link_libraries(OpenGL glfw)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
 
 configure_file(src/shaders/cube.vert src/shaders/cube.vert COPYONLY)

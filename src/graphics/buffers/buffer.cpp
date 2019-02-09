@@ -5,7 +5,7 @@
 #include "buffer.h"
 #include "glad/glad.h"
 
-Buffer::Buffer(float *data, unsigned int count, unsigned int componentCount, std::vector<unsigned short int> pointerOffset)
+Buffer::Buffer(void* data, unsigned int count, unsigned int componentCount, std::vector<unsigned short int> pointerOffset)
     : m_ComponentCount(componentCount), m_PointerOffset(pointerOffset) {
     glGenBuffers(1, &m_BufferID);
     Bind();

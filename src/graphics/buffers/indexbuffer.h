@@ -6,7 +6,7 @@
 
 class IndexBuffer {
 public:
-    IndexBuffer() = delete;
+    IndexBuffer() = default;
     IndexBuffer(unsigned int* data, unsigned int count);
     ~IndexBuffer() = default;
 public:

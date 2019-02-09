@@ -15,7 +15,7 @@ VertexArray::~VertexArray() {
     glDeleteVertexArrays(1, &m_VertexArrayID);
 }
 
-void VertexArray::AddBuffer(Buffer *buffer) {
+void VertexArray::AddBuffer(Buffer* buffer) {
     unsigned int offset = 0;
 
     Bind();

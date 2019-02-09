@@ -164,8 +164,8 @@ int main() {
     cubeShader.SetFloat("u_SpotLight.quadratic", 0.0032f);
 
     /** Material **/
-    cubeShader.SetInt("u_Material.diffuse",  0);
-    cubeShader.SetInt("u_Material.specular",  1);
+    cubeShader.SetInt("u_Material.textureDiffuse1",  0);
+    cubeShader.SetInt("u_Material.textureSpecular1",  1);
     cubeShader.SetFloat("u_Material.shininess", 32.0f);
 
     float lastFrame = 0.0f;
