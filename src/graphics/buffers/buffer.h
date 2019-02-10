@@ -8,9 +8,9 @@
 
 class Buffer {
 public:
-    Buffer() = delete;
-    Buffer(float* data, unsigned int count, unsigned int componentCount, std::vector<unsigned short int> pointerOffset);
-    ~Buffer();
+    Buffer() = default;
+    Buffer(void* data, unsigned int count, unsigned int componentCount, std::vector<unsigned short int> pointerOffset);
+    ~Buffer() = default;
 public:
     void Bind() const;
     void Unbind() const;

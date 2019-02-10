@@ -13,6 +13,8 @@
 #include "indexbuffer.h"
 #include "vertexarray.h"
 
+#include "graphics/models/model.h"
+
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
@@ -29,33 +31,33 @@ int main() {
         // positions          // normals           // texture coords
         -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  0.0f, 0.0f,
         -0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  0.0f, 1.0f,
-         0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  1.0f, 1.0f,
-         0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  1.0f, 0.0f,
+        0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  1.0f, 1.0f,
+        0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  1.0f, 0.0f,
 
         -0.5f, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f,  0.0f, 0.0f,
         -0.5f,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f,  0.0f, 1.0f,
-         0.5f,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f,  1.0f, 1.0f,
-         0.5f, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f,  1.0f, 0.0f,
+        0.5f,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f,  1.0f, 1.0f,
+        0.5f, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f,  1.0f, 0.0f,
 
         -0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,  1.0f, 0.0f,
         -0.5f, -0.5f,  0.5f, -1.0f,  0.0f,  0.0f,  0.0f, 0.0f,
         -0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,  0.0f, 1.0f,
         -0.5f,  0.5f, -0.5f, -1.0f,  0.0f,  0.0f,  1.0f, 1.0f,
 
-         0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,  1.0f, 0.0f,
-         0.5f, -0.5f,  0.5f,  1.0f,  0.0f,  0.0f,  0.0f, 0.0f,
-         0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,  0.0f, 1.0f,
-         0.5f,  0.5f, -0.5f,  1.0f,  0.0f,  0.0f,  1.0f, 1.0f,
+        0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,  1.0f, 0.0f,
+        0.5f, -0.5f,  0.5f,  1.0f,  0.0f,  0.0f,  0.0f, 0.0f,
+        0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,  0.0f, 1.0f,
+        0.5f,  0.5f, -0.5f,  1.0f,  0.0f,  0.0f,  1.0f, 1.0f,
 
         -0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,  0.0f, 1.0f,
         -0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,  0.0f, 0.0f,
-         0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,  1.0f, 0.0f,
-         0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,  1.0f, 1.0f,
+        0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,  1.0f, 0.0f,
+        0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,  1.0f, 1.0f,
 
         -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  0.0f, 1.0f,
         -0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  0.0f, 0.0f,
-         0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  1.0f, 0.0f,
-         0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  1.0f, 1.0f,
+        0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  1.0f, 0.0f,
+        0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  1.0f, 1.0f,
     };
 
     unsigned int indexArray[] = {
@@ -83,13 +85,13 @@ int main() {
     /** Cube **/
     VertexArray cubeVAO;
     std::vector<unsigned short int> cubePointerOffsets = {3, 3, 2};
-    Buffer* cubeBuffer = new Buffer(vertices, sizeof(vertices)/sizeof(vertices[0]), 8, cubePointerOffsets);
+    Buffer cubeBuffer(vertices, sizeof(vertices)/sizeof(vertices[0]), 8, cubePointerOffsets);
     cubeVAO.AddBuffer(cubeBuffer);
 
     /** Light **/
     VertexArray lightVAO;
     std::vector<unsigned short int> lightPointerOffsets = {3};
-    Buffer* lightBuffer = new Buffer(vertices, sizeof(vertices)/sizeof(vertices[0]), 8, lightPointerOffsets);
+    Buffer lightBuffer(vertices, sizeof(vertices)/sizeof(vertices[0]), 8, lightPointerOffsets);
     lightVAO.AddBuffer(lightBuffer);
 
     /** Projection Matrix **/
@@ -97,8 +99,8 @@ int main() {
 
     /** Light Position and Color**/
     glm::vec3 sunDirection(-1.0f, -1.0f,-1.0f);
-    glm::vec3 sunColor(1.0f, 0.6f, 0.0f);
-    glm::vec3 lightColor(1.0f, 1.0f, 0.8f);
+    glm::vec3 sunColor(1.0f, 1.0f, 1.0f);
+    glm::vec3 lightColor(1.0f, 1.0f, 1.0f);
     glm::vec3 flashlightColor(1.0f, 1.0f, 1.0f);
 
     /** Cube Texture **/
@@ -123,7 +125,7 @@ int main() {
     cubeShader.SetVec3("u_DirLight.specular", sunColor * glm::vec3(1.0f, 1.0f, 1.0f));
 
     /** Point Lights **/
-    #define NR_POINT_LIGHTS 3
+#define NR_POINT_LIGHTS 3
     glm::vec3 pointLightPositions[NR_POINT_LIGHTS] = {
         glm::vec3(2.0f, 1.0f, 1.0f),
         glm::vec3(7.0f, 1.3f, 2.0f),
@@ -164,9 +166,58 @@ int main() {
     cubeShader.SetFloat("u_SpotLight.quadratic", 0.0032f);
 
     /** Material **/
-    cubeShader.SetInt("u_Material.diffuse",  0);
-    cubeShader.SetInt("u_Material.specular",  1);
+    cubeShader.SetInt("u_Material.texture_diffuse1", 0);
+    cubeShader.SetInt("u_Material.texture_specular1", 1);
     cubeShader.SetFloat("u_Material.shininess", 32.0f);
+
+    /** Models **/
+    //Model myModel("assets/models/nano_suit/nanosuit.obj");
+    Model myModel("assets/models/light_suit/posed.obj");
+
+    /** Model Shader **/
+    Shader myShader("src/shaders/model_pro.vert", "src/shaders/model_pro.frag");
+
+    myShader.Bind();
+    myShader.SetMat4("u_Projection", projection);
+
+    myShader.SetVec3("u_DirLight.direction", sunDirection);
+    myShader.SetVec3("u_DirLight.ambient",  sunColor * glm::vec3(0.1f, 0.1f, 0.1f));
+    myShader.SetVec3("u_DirLight.diffuse",  sunColor * glm::vec3(0.7f, 0.7f, 0.7f));
+    myShader.SetVec3("u_DirLight.specular", sunColor * glm::vec3(1.0f, 1.0f, 1.0f));
+
+    myShader.SetVec3("u_SpotLight.diffuse",  flashlightColor * glm::vec3(0.7f, 0.7f, 0.7f));
+    myShader.SetVec3("u_SpotLight.specular", flashlightColor * glm::vec3(1.0f, 1.0f, 1.0f));
+    myShader.SetFloat("u_SpotLight.cutOff", glm::cos(glm::radians(8.0f)));
+    myShader.SetFloat("u_SpotLight.outerCutOff", glm::cos(glm::radians(12.0f)));
+    myShader.SetFloat("u_SpotLight.constant", 1.0f);
+    myShader.SetFloat("u_SpotLight.linear", 0.09f);
+    myShader.SetFloat("u_SpotLight.quadratic", 0.0032f);
+
+    myShader.SetVec3("u_PointLights[0].position",  pointLightPositions[0]);
+    myShader.SetVec3("u_PointLights[0].ambient",  lightColor * glm::vec3(0.1f, 0.1f, 0.1f));
+    myShader.SetVec3("u_PointLights[0].diffuse",  lightColor * glm::vec3(0.7f, 0.7f, 0.7f));
+    myShader.SetVec3("u_PointLights[0].specular", lightColor * glm::vec3(1.0f, 1.0f, 1.0f));
+    myShader.SetFloat("u_PointLights[0].constant", 1.0f);
+    myShader.SetFloat("u_PointLights[0].linear", 0.09f);
+    myShader.SetFloat("u_PointLights[0].quadratic", 0.032f);
+
+    myShader.SetVec3("u_PointLights[1].position",  pointLightPositions[1]);
+    myShader.SetVec3("u_PointLights[1].ambient",  lightColor * glm::vec3(0.1f, 0.1f, 0.1f));
+    myShader.SetVec3("u_PointLights[1].diffuse",  lightColor * glm::vec3(0.7f, 0.7f, 0.7f));
+    myShader.SetVec3("u_PointLights[1].specular", lightColor * glm::vec3(1.0f, 1.0f, 1.0f));
+    myShader.SetFloat("u_PointLights[1].constant", 1.0f);
+    myShader.SetFloat("u_PointLights[1].linear", 0.09f);
+    myShader.SetFloat("u_PointLights[1].quadratic", 0.032f);
+
+    myShader.SetVec3("u_PointLights[2].position",  pointLightPositions[2]);
+    myShader.SetVec3("u_PointLights[2].ambient",  lightColor * glm::vec3(0.1f, 0.1f, 0.1f));
+    myShader.SetVec3("u_PointLights[2].diffuse",  lightColor * glm::vec3(0.7f, 0.7f, 0.7f));
+    myShader.SetVec3("u_PointLights[2].specular", lightColor * glm::vec3(1.0f, 1.0f, 1.0f));
+    myShader.SetFloat("u_PointLights[2].constant", 1.0f);
+    myShader.SetFloat("u_PointLights[2].linear", 0.09f);
+    myShader.SetFloat("u_PointLights[2].quadratic", 0.032f);
+
+    myShader.SetFloat("u_Material.shininess", 32.0f);
 
     float lastFrame = 0.0f;
     while (!window.ShouldClose())
@@ -204,7 +255,7 @@ int main() {
         cubeShader.SetVec3("u_SpotLight.direction", camera.GetFront());
         cubeShader.SetBool("u_FlashlightStatus", camera.GetFlashLightStatus());
 
-        /** Cube **/
+        //** Cube **//*
         cubeVAO.Bind();
         IBO.Bind();
 
@@ -226,9 +277,25 @@ int main() {
             glDrawElements(GL_TRIANGLES, IBO.GetCount(), GL_UNSIGNED_INT, nullptr);
         }
 
+        /** Crysis Model **/
+        glm::mat4 modelMatrix(1.0f);
+        modelMatrix = glm::scale(modelMatrix, glm::vec3(0.1f, 0.1f, 0.1f));
+        modelMatrix = glm::translate(modelMatrix, glm::vec3(0.0f, -2.5f, -6.0f));
+        myShader.Bind();
+
+        myShader.SetMat4("u_View", view);
+        myShader.SetMat4("u_Model", modelMatrix);
+
+        myShader.SetVec3("u_CameraPosition", camera.GetPosition());
+
+        myShader.SetVec3("u_SpotLight.position", camera.GetPosition());
+        myShader.SetVec3("u_SpotLight.direction", camera.GetFront());
+        myShader.SetBool("u_FlashlightStatus", camera.GetFlashLightStatus());
+
+        myModel.Draw(myShader);
+
         window.Update();
     }
 
     return 0;
 }
-
