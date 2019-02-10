@@ -8,20 +8,26 @@
 
 class Texture {
 public:
-    Texture() = delete;
+    Texture() = default;
     explicit Texture(const char* texturePath);
     ~Texture();
 
     void Bind() const;
     void Unbind() const;
 
-    void Activate(int offset) const;
+    static void Activate(int offset);
 
     inline unsigned int GetID() const { return m_TextureID; }
+    inline std::string GetTexturePath() const { return m_TexturePath; }
     inline std::string GetType() const { return m_Type; }
+
+    void SetID(unsigned int id);
+    void SetPath(std::string path);
+    void SetType(std::string type);
+
 private:
     unsigned int m_TextureID;
-    const char* m_TexturePath;
+    std::string m_TexturePath;
     std::string m_Type; /* e.g. specular or diffuse */
     int m_Width;
     int m_Height;

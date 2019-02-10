@@ -5,6 +5,7 @@
 #pragma once
 
 #include <vector>
+#include <memory>
 #include "glm/glm.hpp"
 #include "buffers/buffer.h"
 #include "buffers/indexbuffer.h"
@@ -13,6 +14,7 @@
 #include "graphics/shader.h"
 
 struct Vertex {
+    Vertex() : Position(glm::vec3(0.0f)), Normal(glm::vec3(0.0f)), TexCoords(glm::vec2(0.0f)) {}
     glm::vec3 Position;
     glm::vec3 Normal;
     glm::vec2 TexCoords;
@@ -29,6 +31,7 @@ private:
     VertexArray m_VAO;
     Buffer m_VBO;
     IndexBuffer m_IBO;
+
     std::vector<Vertex> m_Vertices;
     std::vector<unsigned int> m_Indices;
     std::vector<Texture> m_Textures;
