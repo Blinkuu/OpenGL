@@ -26,7 +26,7 @@ add_executable(OpenGL
         src/graphics/shader.cpp
         src/graphics/camera.cpp
         src/utils/file_loader.cpp
-        src/utils/stb_image.h
+        src/utils/timer.cpp
         src/graphics/buffers/buffer.cpp
         src/graphics/buffers/indexbuffer.cpp
         src/graphics/buffers/vertexarray.cpp
@@ -35,6 +35,10 @@ add_executable(OpenGL
 
 target_link_libraries(OpenGL glfw assimp)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
+
+add_custom_command(TARGET OpenGL
+        PRE_BUILD COMMAND ${CMAKE_COMMAND} -E copy_directory
+        ${CMAKE_SOURCE_DIR}/assets $<TARGET_FILE_DIR:OpenGL>/assets)
 
 configure_file(src/shaders/cube.vert src/shaders/cube.vert COPYONLY)
 configure_file(src/shaders/cube.frag src/shaders/cube.frag COPYONLY)
@@ -51,34 +55,3 @@ configure_file(src/textures/container2.jpg src/textures/container2.jpg COPYONLY)
 configure_file(src/textures/container2_specular.jpg src/textures/container2_specular.jpg COPYONLY)
 configure_file(src/textures/matrix.jpg src/textures/matrix.jpg COPYONLY)
 configure_file(src/textures/dirt.jpg src/textures/dirt.jpg COPYONLY)
-
-configure_file(assets/models/nano_suit/arm_dif.png              assets/models/nano_suit/arm_dif.png COPYONLY)
-configure_file(assets/models/nano_suit/arm_showroom_ddn.png     assets/models/nano_suit/arm_showroom_ddn.png COPYONLY)
-configure_file(assets/models/nano_suit/arm_showroom_spec.png    assets/models/nano_suit/arm_showroom_spec.png COPYONLY)
-configure_file(assets/models/nano_suit/body_dif.png             assets/models/nano_suit/body_dif.png COPYONLY)
-configure_file(assets/models/nano_suit/body_showroom_ddn.png    assets/models/nano_suit/arm_dif.png COPYONLY)
-configure_file(assets/models/nano_suit/body_showroom_spec.png   assets/models/nano_suit/body_showroom_spec.png COPYONLY)
-configure_file(assets/models/nano_suit/glass_ddn.png            assets/models/nano_suit/glass_ddn.png COPYONLY)
-configure_file(assets/models/nano_suit/glass_dif.png            assets/models/nano_suit/glass_dif.png  COPYONLY)
-configure_file(assets/models/nano_suit/hand_dif.png             assets/models/nano_suit/hand_dif.png COPYONLY)
-configure_file(assets/models/nano_suit/hand_showroom_ddn.png    assets/models/nano_suit/hand_showroom_ddn.png COPYONLY)
-configure_file(assets/models/nano_suit/hand_showroom_spec.png   assets/models/nano_suit/hand_showroom_spec.png COPYONLY)
-configure_file(assets/models/nano_suit/helmet_diff.png          assets/models/nano_suit/helmet_diff.png COPYONLY)
-configure_file(assets/models/nano_suit/helmet_showroom_ddn.png  assets/models/nano_suit/helmet_showroom_ddn.png COPYONLY)
-configure_file(assets/models/nano_suit/helmet_showroom_spec.png assets/models/nano_suit/helmet_showroom_spec.png COPYONLY)
-configure_file(assets/models/nano_suit/leg_dif.png              assets/models/nano_suit/leg_dif.png COPYONLY)
-configure_file(assets/models/nano_suit/leg_showroom_ddn.png     assets/models/nano_suit/leg_showroom_ddn.png COPYONLY)
-configure_file(assets/models/nano_suit/leg_showroom_spec.png    assets/models/nano_suit/leg_showroom_spec.png COPYONLY)
-configure_file(assets/models/nano_suit/nanosuit.blend           assets/models/nano_suit/nanosuit.blend COPYONLY)
-configure_file(assets/models/nano_suit/nanosuit.mtl             assets/models/nano_suit/nanosuit.mtl COPYONLY)
-configure_file(assets/models/nano_suit/nanosuit.obj             assets/models/nano_suit/nanosuit.obj COPYONLY)
-
-configure_file(assets/models/light_suit/LightSuitEtc.png        assets/models/light_suit/LightSuitEtc.png COPYONLY)
-configure_file(assets/models/light_suit/LightSuitEtcSpec.png    assets/models/light_suit/LightSuitEtcSpec.png COPYONLY)
-configure_file(assets/models/light_suit/LightSuitMain.png       assets/models/light_suit/LightSuitMain.png COPYONLY)
-configure_file(assets/models/light_suit/LightSuitEtcSpec.png    assets/models/light_suit/LightSuitEtcSpec.png COPYONLY)
-configure_file(assets/models/light_suit/Ref.png                 assets/models/light_suit/Ref.png COPYONLY)
-configure_file(assets/models/light_suit/Ref2.png                assets/models/light_suit/Ref2.png COPYONLY)
-configure_file(assets/models/light_suit/Ref3.png                assets/models/light_suit/Ref3.png COPYONLY)
-configure_file(assets/models/light_suit/posed.obj               assets/models/light_suit/posed.obj COPYONLY)
-configure_file(assets/models/light_suit/posed.mtl               assets/models/light_suit/posed.mtl COPYONLY)
